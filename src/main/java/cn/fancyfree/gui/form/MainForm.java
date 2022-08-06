@@ -1,4 +1,4 @@
-package cn.fancyfree.tools.form;
+package cn.fancyfree.gui.form;
 
 import javax.swing.*;
 import java.util.ArrayList;

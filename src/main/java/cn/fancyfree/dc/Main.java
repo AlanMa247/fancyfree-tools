@@ -1,6 +1,6 @@
-package cn.fancyfree.tools;
+package cn.fancyfree.dc;
 
-import cn.fancyfree.tools.form.MainForm;
+import cn.fancyfree.gui.form.MainForm;
 
 import javax.swing.*;
 

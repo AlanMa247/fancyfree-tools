@@ -1,8 +1,6 @@
-package cn.fancyfree.tools.form;
+package cn.fancyfree.gui.form;
 
 import javax.swing.*;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.Base64;
 

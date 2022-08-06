@@ -1,4 +1,4 @@
-package cn.fancyfree.component;
+package cn.fancyfree.gui.component.form;
 
 import javax.swing.*;
 import java.awt.*;

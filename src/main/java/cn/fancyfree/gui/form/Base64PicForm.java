@@ -1,18 +1,11 @@
-package cn.fancyfree.tools.form;
-
-import sun.misc.BASE64Encoder;
-import sun.nio.ch.IOUtil;
+package cn.fancyfree.gui.form;
 
 import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Arrays;
 import java.util.Base64;
 
 /**

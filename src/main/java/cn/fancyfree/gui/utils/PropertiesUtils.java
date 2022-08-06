@@ -1,4 +1,4 @@
-package cn.fancyfree.tools.utils;
+package cn.fancyfree.gui.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

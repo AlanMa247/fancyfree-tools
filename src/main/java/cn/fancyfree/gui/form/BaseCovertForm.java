@@ -1,9 +1,6 @@
-package cn.fancyfree.tools.form;
+package cn.fancyfree.gui.form;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 

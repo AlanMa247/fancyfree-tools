@@ -1,38 +1,35 @@
-package cn.fancyfree.tools.form;
+package cn.fancyfree.gui.component.frame;
 
-import cn.fancyfree.component.InCombo;
-import cn.fancyfree.component.InText;
-import cn.fancyfree.component.OutText;
-import cn.fancyfree.tools.utils.PropertiesUtils;
+import cn.fancyfree.gui.component.form.BaseIn;
+import cn.fancyfree.gui.component.form.InCombo;
+import cn.fancyfree.gui.component.form.InText;
+import cn.fancyfree.gui.component.form.OutText;
+import cn.fancyfree.gui.utils.PropertiesUtils;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
 
-/**
- * 基础框
- * @author AlanMa247@Gmail.COM
- * @date 17:18 2020/9/15
-**/
-public class BaseForm extends JFrame {
+public class BaseFrame extends JFrame {
 
     /** 配置 */
-    Map<String, String> config;
+    protected Map<String, String> config;
 
     // 颜色
     /** 文字 */
-    public static Color word = Color.WHITE;
-    /** 钱景 */
-    public static Color bg = new Color(50, 50, 50);
+    protected Color word = Color.WHITE;
+    /** 背景 */
+    protected Color bg = new Color(50, 50, 50);
     // 字体
     /** 错误 */
-    Font err = new Font("微软雅黑", Font.BOLD, 25);
+    protected Font fontErr = new Font("微软雅黑", Font.BOLD, 25);
     /** 信息 */
-    Font info = new Font("微软雅黑", Font.BOLD, 15);
+    protected Font fontInfo = new Font("微软雅黑", Font.BOLD, 15);
     /** 基础 */
-    Font base = new Font("微软雅黑", Font.BOLD, 18);
+    protected Font fontBase = new Font("微软雅黑", Font.BOLD, 18);
     /** 提示 */
-    Font tipF = new Font("微软雅黑", Font.BOLD, 23);
+    protected Font fontTip = new Font("微软雅黑", Font.BOLD, 23);
+
 
     // 坐标系
     /** 横X */
@@ -57,7 +54,7 @@ public class BaseForm extends JFrame {
     /** 输入输出提示 */
     JLabel tip;
 
-    public BaseForm() {
+    public BaseFrame() {
         config = PropertiesUtils.readProperties(System.getProperty("user.dir") + "/config/config.properties");
         baseX = Integer.parseInt(config.get("baseX"));
         baseY = Integer.parseInt(config.get("baseY"));
@@ -74,7 +71,11 @@ public class BaseForm extends JFrame {
 
     }
 
-    public BaseForm(String winName, String appName) {
+    public BaseFrame(String winName, String appName) {
+        new BaseFrame(winName, appName, true);
+    }
+
+    public BaseFrame(String winName, String appName, boolean visible) {
         config = PropertiesUtils.readProperties(System.getProperty("user.dir") + "/config/config.properties");
         baseX = Integer.parseInt(config.get("baseX"));
         baseY = Integer.parseInt(config.get("baseY"));
@@ -88,7 +89,7 @@ public class BaseForm extends JFrame {
         // 头部和底部
         initTitle(appName);
         initCopyright();
-        setVisible(true);
+        if (visible) setVisible(true);
     }
 
     /**
@@ -100,8 +101,26 @@ public class BaseForm extends JFrame {
         message = new JLabel("", JLabel.CENTER);
         add(message);
         message.setBounds((getWidth() - 400) / 2, baseY + 70, 400, 40);
-        message.setFont(info);
+        message.setFont(fontInfo);
         message.setForeground(Color.red);
+    }
+
+    /**
+     * 初始化错误信息
+     * @author AlanMa247@Gmail.COM
+     * @date 17:10 2020/9/11
+     **/
+    protected void setMessage(String message, boolean error) {
+        this.message.setText(message);
+        this.message.setBounds((getWidth() - 400) / 2, baseY + 70, 400, 40);
+        this.message.setFont(fontInfo);
+        if (error) {
+            this.message.setFont(fontErr);
+            this.message.setForeground(Color.red);
+        } else {
+            this.message.setFont(fontInfo);
+            this.message.setForeground(Color.green);
+        }
     }
 
     /**
@@ -168,7 +187,7 @@ public class BaseForm extends JFrame {
      * @param component 组件
      **/
     void setStyle(Component component) {
-        component.setFont(base);
+        component.setFont(fontBase);
         component.setForeground(word);
         if (component instanceof JRadioButton) {
             ((JRadioButton) component).setOpaque(false);
@@ -186,7 +205,7 @@ public class BaseForm extends JFrame {
             setStyle(component.getLabel());
             setBg(component.getLabel());
             add(component.getLabel());
-            add(component.getCombo());
+            add(component.getInput());
         }
     }
 
@@ -196,11 +215,11 @@ public class BaseForm extends JFrame {
      * @date 13:55 2020/9/15
      * @param component 组件
      **/
-    void addInPanel(InText component) {
+    protected void addInPanel(BaseIn component) {
         setStyle(component.getLabel());
         setBg(component.getLabel());
         add(component.getLabel());
-        add(component.getText());
+        add(component.getInput());
     }
 
     /**
@@ -225,7 +244,7 @@ public class BaseForm extends JFrame {
      * @author AlanMa247@Gmail.COM
      * @date 17:31 2020/9/15
      * @param component
-    **/
+     **/
     void setBg(Component component) {
         if (component instanceof JComboBox) {
             ((JComboBox) component).setOpaque(true);

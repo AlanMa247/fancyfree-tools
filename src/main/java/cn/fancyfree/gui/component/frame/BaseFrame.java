@@ -2,7 +2,6 @@ package cn.fancyfree.gui.component.frame;
 
 import cn.fancyfree.gui.component.form.BaseIn;
 import cn.fancyfree.gui.component.form.InCombo;
-import cn.fancyfree.gui.component.form.InText;
 import cn.fancyfree.gui.component.form.OutText;
 import cn.fancyfree.gui.utils.PropertiesUtils;
 

@@ -5,6 +5,7 @@ import cn.fancyfree.gui.component.form.InText;
 import cn.fancyfree.gui.component.form.NgBtn;
 import cn.fancyfree.gui.component.form.OkBtn;
 import cn.fancyfree.gui.component.frame.BaseFrame;
+import cn.fancyfree.gui.utils.FrameUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -51,5 +52,6 @@ public class LoginFrame extends BaseFrame {
 
     public static void main(String[] args) {
         LoginFrame loginFrame = new LoginFrame();
+        FrameUtils.enableClose2Tray(loginFrame, null, null);
     }
 }

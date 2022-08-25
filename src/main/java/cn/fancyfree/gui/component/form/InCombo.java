@@ -1,7 +1,5 @@
 package cn.fancyfree.gui.component.form;
 
-import cn.fancyfree.gui.component.frame.BaseFrame;
-
 import javax.swing.*;
 import java.awt.*;
 

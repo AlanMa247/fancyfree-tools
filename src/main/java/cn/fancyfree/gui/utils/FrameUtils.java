@@ -3,11 +3,13 @@ package cn.fancyfree.gui.utils;
 import cn.fancyfree.gui.component.frame.BaseFrame;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 /**
  *@描述 窗体使用工具类
@@ -102,5 +104,18 @@ public class FrameUtils {
             }
         });
 
+    }
+
+    public static String bindChooseFile2Button(JButton jButton) {
+
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("图片文件", "jpg", "jpeg", "png", "gif");
+        chooser.setFileFilter(filter);
+        int ret = chooser.showOpenDialog(jButton.getParent());
+        if (ret == JFileChooser.APPROVE_OPTION) {
+            File file = chooser.getSelectedFile();
+            return file.getAbsolutePath();
+        }
+        return null;
     }
 }

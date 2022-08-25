@@ -1,6 +1,5 @@
 package cn.fancyfree.gui.component.form;
 
-import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 import lombok.Data;
 
 import javax.swing.*;
